@@ -1,6 +1,10 @@
 <?php
 
+// Facades
 use Illuminate\Support\Facades\Route;
+
+// Controllers
+use App\Http\Controllers\DatatypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +26,12 @@ Route::get('/apple', function () {
 Route::get('/bootstrap5', function () {
     return view('bootstrap5.test');
 });
+
+// Route::resource('datatypes', DatatypeController::class);
+Route::get('datatypes',[DatatypeController::class, 'index'])->name('datatypes.index');
+Route::get('datatypes/create',[DatatypeController::class, 'create'])->name('datatypes.create');
+Route::post('datatypes',[DatatypeController::class, 'store'])->name('datatypes.store');
+Route::get('datatypes/{id}',[DatatypeController::class, 'show'])->name('datatypes.show');
+Route::get('datatypes/{id}/edit',[DatatypeController::class, 'edit'])->name('datatypes.edit');
+Route::patch('datatypes/{id}',[DatatypeController::class, 'update'])->name('datatypes.update');
+Route::delete('datatypes/{id}',[DatatypeController::class, 'destroy'])->name('datatypes.destroy');
