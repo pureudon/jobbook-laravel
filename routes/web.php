@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/apple', function () {
     return 'hihi apple';
 });
+Route::get('/bootstrap5', function () {
+    return view('bootstrap5.test');
+});
