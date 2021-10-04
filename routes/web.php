@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Controllers
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DatatypeController;
 
 /*
@@ -35,3 +36,18 @@ Route::get('datatypes/{id}',[DatatypeController::class, 'show'])->name('datatype
 Route::get('datatypes/{id}/edit',[DatatypeController::class, 'edit'])->name('datatypes.edit');
 Route::patch('datatypes/{id}',[DatatypeController::class, 'update'])->name('datatypes.update');
 Route::delete('datatypes/{id}',[DatatypeController::class, 'destroy'])->name('datatypes.destroy');
+
+
+// Route::resource('company', CompanyController::class);
+Route::get('company',[CompanyController::class, 'index'])->name('company.index');
+Route::get('company/create',[CompanyController::class, 'create'])->name('company.create');
+Route::post('company',[CompanyController::class, 'store'])->name('company.store');
+Route::get('company/{id}/edit',[CompanyController::class, 'edit'])->name('company.edit');
+Route::patch('company/{id}',[CompanyController::class, 'update'])->name('company.update');
+Route::delete('company/{id}',[CompanyController::class, 'destroy'])->name('company.destroy');
+Route::get('company/{id}/duplicate',[CompanyController::class, 'duplicate'])->name('company.duplicate');
+Route::post('company/data',[CompanyController::class, 'data'])->name('company.data');
+Route::get('groupchangeform',[CompanyController::class, 'groupchangeform'])->name('company.groupchangeform');
+Route::post('groupchangefontcolor',[CompanyController::class, 'groupchangefontcolor'])->name('company.groupchangefontcolor');
+// company.show place to the last row, conflict with others GET route
+Route::get('company/{id}',[CompanyController::class, 'show'])->name('company.show');
