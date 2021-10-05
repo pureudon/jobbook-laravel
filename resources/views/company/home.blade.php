@@ -8,6 +8,10 @@
 
 
 @section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/nav/home.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/nav/nav.css') }}" />
+
+
 <!-- <link rel="stylesheet" href={{ asset('bootstrap-5.1.1-dist/css/bootstrap.min.css') }}> -->
 <link rel="stylesheet" type="text/css" href="{{ asset('datatables/DataTables-1.11.3/css/jquery.dataTables.pureudon.css') }}">
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('datatables/media/css/jquery.dataTables.pureudon.css') }}"> -->

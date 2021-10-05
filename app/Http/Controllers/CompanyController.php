@@ -59,7 +59,7 @@ class CompanyController extends Controller
         $ajaxsource = route('company.data');
         $htmltitle = "Company";
         $menu = "customer";
-        $submenu = "companynew";
+        $submenu = "company";
 
         // datatables features
         $datatables_colreorder = false;
@@ -82,7 +82,9 @@ class CompanyController extends Controller
             'category_selectlist',
             'fontcolor_selectlist',
             'datatables_clearfilter',
-            'columns'
+            'columns',
+            'menu',
+            'submenu'
         ));
     }
 

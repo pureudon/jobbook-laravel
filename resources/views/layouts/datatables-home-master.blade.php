@@ -12,7 +12,10 @@
     </style>
 </head>
 <body>
-@yield('nav')
+
+@include('navigation.menu')
+@include('navigation.menusub')
+
 @yield('title')
 @yield('menu_action')
 @yield('content')

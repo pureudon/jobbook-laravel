@@ -20,13 +20,13 @@ use App\Http\Controllers\DatatypeController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Route::get('/apple', function () {
     return 'hihi apple';
 });
 Route::get('/bootstrap5', function () {
     return view('bootstrap5.test');
-})->middleware(['auth'])->name('bootstrap5');;
+})->middleware(['auth'])->name('bootstrap5');
 
 
 
@@ -62,7 +62,7 @@ Route::delete('datatypes/{id}',[DatatypeController::class, 'destroy'])->name('da
 
 
 // Route::resource('company', CompanyController::class);
-Route::get('company',[CompanyController::class, 'index'])->name('company.index');
+Route::get('company',[CompanyController::class, 'index'])->middleware(['auth'])->name('company.index');
 Route::get('company/create',[CompanyController::class, 'create'])->name('company.create');
 Route::post('company',[CompanyController::class, 'store'])->name('company.store');
 Route::get('company/{id}/edit',[CompanyController::class, 'edit'])->name('company.edit');
