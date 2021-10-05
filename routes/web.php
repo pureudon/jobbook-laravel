@@ -28,6 +28,29 @@ Route::get('/bootstrap5', function () {
     return view('bootstrap5.test');
 });
 
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::view('profile','profile')->name('profile');
+    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::resource('tasks', \App\Http\Controllers\TaskController::class);
+});
+
+require __DIR__.'/auth.php';
+
+
+
+
 // Route::resource('datatypes', DatatypeController::class);
 Route::get('datatypes',[DatatypeController::class, 'index'])->name('datatypes.index');
 Route::get('datatypes/create',[DatatypeController::class, 'create'])->name('datatypes.create');
