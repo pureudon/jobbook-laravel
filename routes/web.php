@@ -26,7 +26,7 @@ Route::get('/apple', function () {
 });
 Route::get('/bootstrap5', function () {
     return view('bootstrap5.test');
-});
+})->middleware(['auth'])->name('bootstrap5');;
 
 
 
