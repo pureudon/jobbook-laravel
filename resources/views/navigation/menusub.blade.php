@@ -8,6 +8,12 @@
         @elseif ($menu=='others')
 
         @endif
+
+        @if ($menu=='jobbookprofile')
+            <li class="{{ ($submenu=='jobbookprofile') ? 'selected' : '' }}"><a href="{{ route('jobbookprofile.index') }}">Profile</a></li>
+        @elseif ($menu=='others')
+
+        @endif
     @else
         <li><a href="#">Empty</a></li>
     @endif

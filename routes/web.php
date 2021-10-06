@@ -50,7 +50,7 @@ require __DIR__.'/auth.php';
 
 
 
-
+# Datatypes
 // Route::resource('datatypes', DatatypeController::class);
 Route::get('datatypes',[DatatypeController::class, 'index'])->name('datatypes.index');
 Route::get('datatypes/create',[DatatypeController::class, 'create'])->name('datatypes.create');
@@ -60,7 +60,7 @@ Route::get('datatypes/{id}/edit',[DatatypeController::class, 'edit'])->name('dat
 Route::patch('datatypes/{id}',[DatatypeController::class, 'update'])->name('datatypes.update');
 Route::delete('datatypes/{id}',[DatatypeController::class, 'destroy'])->name('datatypes.destroy');
 
-
+# Company
 // Route::resource('company', CompanyController::class);
 Route::get('company',[CompanyController::class, 'index'])->middleware(['auth'])->name('company.index');
 Route::get('company/create',[CompanyController::class, 'create'])->name('company.create');
@@ -74,3 +74,7 @@ Route::get('groupchangeform',[CompanyController::class, 'groupchangeform'])->nam
 Route::post('groupchangefontcolor',[CompanyController::class, 'groupchangefontcolor'])->name('company.groupchangefontcolor');
 // company.show place to the last row, conflict with others GET route
 Route::get('company/{id}',[CompanyController::class, 'show'])->name('company.show');
+
+# Jobbook Profile
+Route::get('jobbookprofile',[\App\Http\Controllers\JobbookProfileController::class, 'index'])->name('jobbookprofile.index');
+Route::put('jobbookprofile', [\App\Http\Controllers\JobbookProfileController::class, 'update'])->name('jobbookprofile.update');
