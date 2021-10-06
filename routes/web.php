@@ -39,9 +39,9 @@ Route::group(['middleware' => 'auth'], function() {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::view('profile','profile')->name('profile');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])
-        ->name('profile.update');
+    // Route::view('profile','profile')->name('profile');
+    Route::get('profile',[\App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     Route::resource('tasks', \App\Http\Controllers\TaskController::class);
 });

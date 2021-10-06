@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    public function index()
+    {
+        return view('profile.index');
+    }
+
     public function update(UpdateProfileRequest $request)
     {
         auth()->user()->update($request->only('name', 'email'));
@@ -17,6 +22,6 @@ class ProfileController extends Controller
             ]);
         }
 
-        return redirect()->route('profile')->with('message', 'Profile saved successfully');
+        return redirect()->route('profile.index')->with('message', 'Profile saved successfully');
     }
 }
