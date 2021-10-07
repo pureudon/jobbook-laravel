@@ -3,7 +3,39 @@
 <nav id="sidebar-nav">
     <ul class="nav nav-pills nav-stacked">
     @if (isset($menu))
-        <li class="{{ ($menu=='customer') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>Customer</a></li>
+        @if(false)
+        <li class="{{ ($menu=='dashboard') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Dashboard') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='quotation') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Quotation') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='order') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Order') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='delivery') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Delivery') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='collection') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Collection') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='inventory') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Inventory') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='price') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Price') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='invoice') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Invoice') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='products') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Products') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='services') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Services') }}</a></li>
+        @endif
+        @if(true)
+        <li class="{{ ($menu=='customers') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Customers') }}</a></li>
+        @endif
     @else
         <li ><a href='#'>Empty</a></li>
     @endif
@@ -13,7 +45,7 @@
         <form method="POST" action="{{ route('logout') }}">
         @csrf
         <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
-        this.closest('form').submit();">Logout</a>
+        this.closest('form').submit();">{{ __('Logout') }}</a>
         </form>
     </li>
 

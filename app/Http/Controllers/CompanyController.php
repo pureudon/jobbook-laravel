@@ -58,7 +58,7 @@ class CompanyController extends Controller
         $fullview = '';
         $ajaxsource = route('company.data');
         $htmltitle = "Company";
-        $menu = "customer";
+        $menu = "customers";
         $submenu = "company";
 
         // datatables features
