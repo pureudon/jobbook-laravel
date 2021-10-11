@@ -291,7 +291,10 @@ FontColor
                         extend: 'colvis',
                         text: 'Custom',
                         collectionLayout: 'fixed two-column',
-                        postfixButtons: [ 'colvisRestore' ]
+                        postfixButtons: [ 'colvisRestore' ],
+                        columnText: function ( dt, idx, title ) {
+                        return (idx+1)+': '+title;
+                        }
                     },
                 ],
 @endif
