@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'de16b4585170f648a84bddeed419453138bfe459',
+        'reference' => '6022d1ec4aa35f793d4cb663b52d899ab46bb1de',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -92,6 +92,15 @@
             'install_path' => __DIR__ . '/../egulias/email-validator',
             'aliases' => array(),
             'reference' => '0dbf5d78455d4d6a41d186da50adc1122ec066f4',
+            'dev_requirement' => false,
+        ),
+        'elibyy/tcpdf-laravel' => array(
+            'pretty_version' => '8.1.2',
+            'version' => '8.1.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../elibyy/tcpdf-laravel',
+            'aliases' => array(),
+            'reference' => '50a5c6bfc38fc0c03deb16d4065267f471c787d9',
             'dev_requirement' => false,
         ),
         'facade/flare-client-php' => array(
@@ -409,7 +418,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'de16b4585170f648a84bddeed419453138bfe459',
+            'reference' => '6022d1ec4aa35f793d4cb663b52d899ab46bb1de',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -787,8 +796,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -1263,6 +1272,15 @@
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),
             'reference' => 'eaaea4098be1c90c8285543e1356a09c8aa5c8da',
+            'dev_requirement' => false,
+        ),
+        'tecnickcom/tcpdf' => array(
+            'pretty_version' => '6.4.2',
+            'version' => '6.4.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tecnickcom/tcpdf',
+            'aliases' => array(),
+            'reference' => '172540dcbfdf8dc983bc2fe78feff48ff7ec1c76',
             'dev_requirement' => false,
         ),
         'theseer/tokenizer' => array(
