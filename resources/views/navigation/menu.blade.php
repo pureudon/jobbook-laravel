@@ -25,7 +25,7 @@
         <li class="{{ ($menu=='price') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Price') }}</a></li>
         @endif
         @if(true)
-        <li class="{{ ($menu=='invoice') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Invoice') }}</a></li>
+        <li class="{{ ($menu=='invoice') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Invoice') }}</a></li>
         @endif
         @if(true)
         <li class="{{ ($menu=='products') ? 'selected' : '' }}"><a href="{{ route('company.index') }}" {{ (false) ? 'target="_blank"' : '' }}>{{ __('Products') }}</a></li>

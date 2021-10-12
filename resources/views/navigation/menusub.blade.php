@@ -25,24 +25,26 @@
             <li class="{{ ($submenu=='inventory') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Inventory') }}</a></li>
             <li class="{{ ($submenu=='warehouse') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Warehouse') }}</a></li>
             <li class="{{ ($submenu=='opening') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Opening') }}</a></li>
+            <li class="{{ ($submenu=='in') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('In') }}</a></li>
+            <li class="{{ ($submenu=='out') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Out') }}</a></li>
             <li class="{{ ($submenu=='lost') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Lost') }}</a></li>
             <li class="{{ ($submenu=='damaged') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Damaged') }}</a></li>
         @elseif ($menu=='price')
             <li class="{{ ($submenu=='price') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Price') }}</a></li>
         @elseif ($menu=='invoice')
-            <li class="{{ ($submenu=='invoice') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Invoice') }}</a></li>
-            <li class="{{ ($submenu=='debitnote') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('DebitNote') }}</a></li>
-            <li class="{{ ($submenu=='creditnote') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('CreditNote') }}</a></li>
-            <li class="{{ ($submenu=='statement') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Statement') }}</a></li>
-            <li class="{{ ($submenu=='receipt') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Receipt') }}</a></li>
-            <li class="{{ ($submenu=='pv') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('PaymentVoucher') }}</a></li>
-            <li class="{{ ($submenu=='rv') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('ReceivedVoucher') }}</a></li>
-            <li class="{{ ($submenu=='fax') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Fax') }}</a></li>
-            <li class="{{ ($submenu=='notice') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Notice') }}</a></li>
-            <li class="{{ ($submenu=='deposit') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Deposit') }}</a></li>
-            <li class="{{ ($submenu=='payslip') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Payslip') }}</a></li>
-            <li class="{{ ($submenu=='bankcheck') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('BankCheck') }}</a></li>
-            <li class="{{ ($submenu=='report') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Report') }}</a></li>
+            <li class="{{ ($submenu=='invoice') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Invoice') }}</a></li>
+            <li class="{{ ($submenu=='debitnote') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('DebitNote') }}</a></li>
+            <li class="{{ ($submenu=='creditnote') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('CreditNote') }}</a></li>
+            <li class="{{ ($submenu=='statement') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Statement') }}</a></li>
+            <li class="{{ ($submenu=='receipt') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Receipt') }}</a></li>
+            <li class="{{ ($submenu=='pv') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('PaymentVoucher') }}</a></li>
+            <li class="{{ ($submenu=='rv') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('ReceivedVoucher') }}</a></li>
+            <li class="{{ ($submenu=='fax') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Fax') }}</a></li>
+            <li class="{{ ($submenu=='notice') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Notice') }}</a></li>
+            <li class="{{ ($submenu=='deposit') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Deposit') }}</a></li>
+            <li class="{{ ($submenu=='payslip') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Payslip') }}</a></li>
+            <li class="{{ ($submenu=='bankcheck') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('BankCheck') }}</a></li>
+            <li class="{{ ($submenu=='report') ? 'selected' : '' }}"><a href="{{ route('invoice.index') }}">{{ __('Report') }}</a></li>
         @elseif ($menu=='products')
             <li class="{{ ($submenu=='products') ? 'selected' : '' }}"><a href="{{ route('company.index') }}">{{ __('Products') }}</a></li>
         @elseif ($menu=='services')

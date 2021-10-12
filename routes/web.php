@@ -78,3 +78,18 @@ Route::get('company/{id}',[CompanyController::class, 'show'])->name('company.sho
 # Jobbook Profile
 Route::get('jobbookprofile',[\App\Http\Controllers\JobbookProfileController::class, 'index'])->name('jobbookprofile.index');
 Route::put('jobbookprofile', [\App\Http\Controllers\JobbookProfileController::class, 'update'])->name('jobbookprofile.update');
+
+# Invoice
+// Route::resource('invoice', \App\Http\Controllers\InvoiceController::class);
+Route::get('invoice',[\App\Http\Controllers\InvoiceController::class, 'index'])->middleware(['auth'])->name('invoice.index');
+Route::get('invoice/create',[\App\Http\Controllers\InvoiceController::class, 'create'])->name('invoice.create');
+Route::post('invoice',[\App\Http\Controllers\InvoiceController::class, 'store'])->name('invoice.store');
+Route::get('invoice/{invoice}/edit',[\App\Http\Controllers\InvoiceController::class, 'edit'])->name('invoice.edit');
+Route::patch('invoice/{invoice}',[\App\Http\Controllers\InvoiceController::class, 'update'])->name('invoice.update');
+Route::delete('invoice/{invoice}',[\App\Http\Controllers\InvoiceController::class, 'destroy'])->name('invoice.destroy');
+Route::get('invoice/{invoice}/duplicate',[\App\Http\Controllers\InvoiceController::class, 'duplicate'])->name('invoice.duplicate');
+Route::post('invoice/data',[\App\Http\Controllers\InvoiceController::class, 'data'])->name('invoice.data');
+// Route::get('groupchangeform',[\App\Http\Controllers\InvoiceController::class, 'groupchangeform'])->name('invoice.groupchangeform');
+// Route::post('groupchangefontcolor',[\App\Http\Controllers\InvoiceController::class, 'groupchangefontcolor'])->name('invoice.groupchangefontcolor');
+// invoice.show place to the last row, conflict with others GET route
+Route::get('invoice/{invoice}',[\App\Http\Controllers\InvoiceController::class, 'show'])->name('invoice.show');

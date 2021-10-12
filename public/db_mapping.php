@@ -58,4 +58,39 @@
         $db_company_updated_byname = 'updated_byname';
         $db_company_created_at = 'created_at';
         $db_company_updated_at = 'updated_at';
+
+        # invoice
+        $db_invoice_id = 'id';
+        $db_invoice_date = 'date';
+        $db_invoice_name = 'name';
+        $db_invoice_category = 'category';
+        $db_invoice_type = 'type';
+        $db_invoice_ref = 'ref';
+        $db_invoice_fontcolor = 'fontcolor';
+        $db_invoice_companyid = 'companyid';
+        $db_invoice_companyname1 = 'companyname1';
+        $db_invoice_companyname2 = 'companyname2';
+        $db_invoice_clientid = 'clientid';
+        $db_invoice_clientname = 'clientname';
+        $db_invoice_siteid = 'siteid';
+        $db_invoice_sitename = 'sitename';
+        $db_invoice_addr1 = 'addr1';
+        $db_invoice_addr2 = 'addr2';
+        $db_invoice_addr3 = 'addr3';
+        $db_invoice_attn = 'attn';
+        $db_invoice_dept = 'dept';
+        $db_invoice_contactperson = 'contactperson';
+        $db_invoice_tel = 'tel';
+        $db_invoice_fax = 'fax';
+        $db_invoice_email = 'email';
+        $db_invoice_quot = 'quot';
+        $db_invoice_po = 'po';
+        $db_invoice_totalamount = 'totalamount';
+        $db_invoice_created_by = 'created_by';
+        $db_invoice_created_byname = 'created_byname';
+        $db_invoice_updated_by = 'updated_by';
+        $db_invoice_updated_byname = 'updated_byname';
+        $db_invoice_created_at = 'created_at';
+        $db_invoice_updated_at = 'updated_at';
+        
 ?>
