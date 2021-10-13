@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
+use Elibyy\TCPDF\Facades\TCPDF;
 
 // Models
 use App\Models\InvoiceColumn;
@@ -18,19 +19,24 @@ use App\Repositories\InvoiceColumnRepository;
 // Transformers
 use App\Transformers\InvoiceTransformer;
 
+// Services
+use App\Services\TCPDFSample1Service;
 
 class InvoiceController extends Controller
 {
     protected $invoiceRepository;
     protected $invoicecolumnRepository;
+    protected $tcpdfsample1Service;
 
     public function __construct(
         InvoiceRepository $invoiceRepository,
-        InvoiceColumnRepository $invoicecolumnRepository
+        InvoiceColumnRepository $invoicecolumnRepository,
+        TCPDFSample1Service $tcpdfsample1Service
     )
     {
         $this->invoiceRepository = $invoiceRepository;
         $this->invoicecolumnRepository = $invoicecolumnRepository;
+        $this->tcpdfsample1Service = $tcpdfsample1Service;
     }
 
     /**
@@ -416,4 +422,14 @@ class InvoiceController extends Controller
             'category_selectlist'
         ));
     }
+
+    // TCPDF 
+
+    public function pdf($id)
+    {
+        // $this->tcpdfsample1Service->generatepdf();
+        $this->tcpdfsample1Service->generate_sample1_pdf($id=1, $letterhead=true, $signature=true, $letterfooter=true);
+        
+    }
+
 }

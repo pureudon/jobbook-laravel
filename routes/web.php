@@ -91,5 +91,7 @@ Route::get('invoice/{invoice}/duplicate',[\App\Http\Controllers\InvoiceControlle
 Route::post('invoice/data',[\App\Http\Controllers\InvoiceController::class, 'data'])->name('invoice.data');
 // Route::get('groupchangeform',[\App\Http\Controllers\InvoiceController::class, 'groupchangeform'])->name('invoice.groupchangeform');
 // Route::post('groupchangefontcolor',[\App\Http\Controllers\InvoiceController::class, 'groupchangefontcolor'])->name('invoice.groupchangefontcolor');
+Route::get('invoice/{invoice}/pdf',[\App\Http\Controllers\InvoiceController::class, 'pdf'])->name('invoice.pdf');
+
 // invoice.show place to the last row, conflict with others GET route
 Route::get('invoice/{invoice}',[\App\Http\Controllers\InvoiceController::class, 'show'])->name('invoice.show');

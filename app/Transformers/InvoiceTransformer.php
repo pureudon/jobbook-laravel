@@ -17,13 +17,17 @@ class InvoiceTransformer extends TransformerAbstract
     {
         include 'db_mapping.php';
 
+        $now_timestamp_code = Carbon::now()->format('YmdHis');
+
         // action
         $view_html = '<a href="'.route('invoice.show', ['invoice' => $invoice]).'" >View' . '</a>';
         $edit_html = '<a href="'.route('invoice.edit', ['invoice' => $invoice]).'" >Edit' . '</a>';
         $duplicate_html = '<a href="'.route('invoice.duplicate', ['invoice' => $invoice]).'" >Duplicate' . '</a>';
+        $pdf_html = '<a href="'.route('invoice.pdf', ['invoice' => $invoice]).'?timestamp='.$now_timestamp_code.'" >PDF' . '</a>';
         $action_html = $view_html;
         $action_html .= ' '.$edit_html;
         $action_html .= ' '.$duplicate_html;
+        $action_html .= ' '.$pdf_html;
         // $action_html = '';
 
         // invoice name
