@@ -5,6 +5,8 @@ namespace App\Services;
 // Facades
 use Elibyy\TCPDF\Facades\TCPDF;
 use PDF;
+
+// Models
 use App\Models\Item;
 
 class TCPDFSample1Service
@@ -116,6 +118,30 @@ class TCPDFSample1Service
             $item->descriptioncomment = '';
             $item->subtotalcomment = '';
         $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
+        $items->push($item);
 
         $site_addr = 'siteaddr';
         $contractamount = '9999999.99';
@@ -206,7 +232,7 @@ class TCPDFSample1Service
         PDF::SetHeaderMargin(5); # PDF_MARGIN_HEADER
         PDF::SetFooterMargin(15); # PDF_MARGIN_FOOTER
         // set auto page breaks
-        PDF::SetAutoPageBreak(true, 297-257); # PDF_MARGIN_BOTTOM 40
+        PDF::SetAutoPageBreak(true, 297-247); # PDF_MARGIN_BOTTOM 50
         // set image scale factor
         PDF::setImageScale(1.25); # PDF_IMAGE_SCALE_RATIO
 
@@ -281,7 +307,8 @@ class TCPDFSample1Service
         $htmlcontent .= '</table>';
 
         $pdf->SetFont('droidsansfallbackhk', '', 8);
-        $pdf->writeHTML($htmlcontent, false, false, false, false, '');
+        // writeHTML($html, $ln=true, $fill=false, $reseth=false, $cell=false, $align='')
+        $pdf->writeHTML($htmlcontent, $ln=false, $fill=false, $reseth=false, $cell=false, $algin='');
 
         // letter footer
         $pdf->SetY(-13);
@@ -360,7 +387,7 @@ class TCPDFSample1Service
         // $x = PDF::getX();
         // $y = PDF::getY();
 
-        $view = \View::make('tcpdf.quot.html2pdf_info_table')
+        $view = \View::make('tcpdf.sample1.info_table')
             ->with('docdate', $docdate)
             ->with('docref', $docref)
             ->with('label_client', $label_client)
@@ -611,16 +638,13 @@ class TCPDFSample1Service
 
     public function pdf_contactus($contact_name,$contact_phone_display)
     {
-        $view = \View::make('tcpdf.quot.html2pdf_contactus')
-        ->with('contact_name', $contact_name)
-        ->with('contact_phone_display', $contact_phone_display);
-
-        $html = $view->render();
+        $html = '';
+        $html .= '<table>';
+        $html .= '<tr><td style="text-align:center">Please feel free to contact '.$contact_name.' at '.$contact_phone_display.' for further assistance.</td></tr>';
+        $html .= '</table>';
 
         PDF::SetFont('droidsansfallbackhk', '', 12);
         PDF::WriteHTML($html);
-
-        // return $output;
     }
 
 
