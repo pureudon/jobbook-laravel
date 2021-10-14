@@ -41,7 +41,7 @@ class TCPDFSample1Service
         $logo = public_path('tcpdf/images/').'company_logo_small.png';
         $iso = public_path('tcpdf/images/').'ISO_FS680019_cut.png';
         $companynamezh = '小 紅 花 有 限 公 司';
-        $style = 'color:rgb(66, 100, 244)';
+        $style = 'color:rgb(222, 49, 99)';
         $companynameen1 = 'LITTLE RED FLOWER';
         $companynameen2 = ' COMPANY LIMITED';
         
@@ -102,46 +102,17 @@ class TCPDFSample1Service
 
         # content table
         $items = collect();
+
+        for($i=1;$i<100;$i++){
             $item = New Item;
-            $item->description = 'Item1';
-            $item->unitprice = '';
-            $item->qty = '';
-            $item->subtotal = '20.20';
-            $item->descriptioncomment = 'desc comment';
-            $item->subtotalcomment = 'comment';
-        $items->push($item);
-            $item = New Item;
-            $item->description = 'Item2';
-            $item->unitprice = '';
-            $item->qty = '';
-            $item->subtotal = '12305.50';
+            $item->description = 'Item'.$i;
+            $item->unitprice = $i;
+            $item->qty = $i;
+            $item->subtotal = number_format($i * $i,2,".","") ;
             $item->descriptioncomment = '';
             $item->subtotalcomment = '';
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
-        $items->push($item);
+            $items->push($item);
+        }
 
         $site_addr = 'siteaddr';
         $contractamount = '9999999.99';
@@ -387,7 +358,7 @@ class TCPDFSample1Service
         // $x = PDF::getX();
         // $y = PDF::getY();
 
-        $view = \View::make('tcpdf.sample1.info_table')
+        $view = \View::make('tcpdf.sample1.info_content')
             ->with('docdate', $docdate)
             ->with('docref', $docref)
             ->with('label_client', $label_client)
@@ -610,7 +581,7 @@ class TCPDFSample1Service
         $html = '';
         $html .= '<table style="margin:0px; padding:0px 2px 1px 3px; width:100%; border:1px solid #000000;">';
         $html .= '<tr>';
-        $html .= '<td colspan="4" style="text-align:right; width:580px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-size: 140%">Total';
+        $html .= '<td colspan="4" style="text-align:right; width:580px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-size: 140%">';
         $html .= $label_totalamount.'</td>';
         $html .= '<td style="text-align:right; width:90px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-size: 140%">'.number_format($totalamount, 2, '.', ',').'</td>';
         $html .= '</tr>';

@@ -106,8 +106,8 @@
             {{ $label_client_email }}
         </td>
         <td style="text-align:center; width:195; border-left: 1px solid black; border-top: 1px solid black;">
-            {{$client_contact_email}}
-            {{ ($site_contact_email != null) ? '/'.$site_contact_email:'' }}
+            {{$client_contact_email}} 
+            {!! ($site_contact_email != null) ? '<br>'.$site_contact_email:'' !!}
         </td>
         <td style="text-align:center; width:40; border-left: 1px solid black; border-top: 1px solid black;">
             {{ $label_site_tel }}
