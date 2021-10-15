@@ -93,6 +93,7 @@ Route::post('invoice/data',[\App\Http\Controllers\InvoiceController::class, 'dat
 // Route::post('groupchangefontcolor',[\App\Http\Controllers\InvoiceController::class, 'groupchangefontcolor'])->name('invoice.groupchangefontcolor');
 Route::get('invoice/{invoice}/pdf',[\App\Http\Controllers\InvoiceController::class, 'pdf'])->name('invoice.pdf');
 Route::get('invoice/{invoice}/pdf2',[\App\Http\Controllers\InvoiceController::class, 'pdf2'])->name('invoice.pdf2');
+Route::get('invoice/{invoice}/pdf3',[\App\Http\Controllers\InvoiceController::class, 'pdf3'])->name('invoice.pdf3');
 
 // invoice.show place to the last row, conflict with others GET route
 Route::get('invoice/{invoice}',[\App\Http\Controllers\InvoiceController::class, 'show'])->name('invoice.show');

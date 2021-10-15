@@ -25,11 +25,13 @@ class InvoiceTransformer extends TransformerAbstract
         $duplicate_html = '<a href="'.route('invoice.duplicate', ['invoice' => $invoice]).'" >Duplicate' . '</a>';
         $pdf_html = '<a href="'.route('invoice.pdf', ['invoice' => $invoice]).'?timestamp='.$now_timestamp_code.'" >PDF' . '</a>';
         $pdf2_html = '<a href="'.route('invoice.pdf2', ['invoice' => $invoice]).'?timestamp='.$now_timestamp_code.'" >PDF2' . '</a>';
+        $pdf3_html = '<a href="'.route('invoice.pdf3', ['invoice' => $invoice]).'?timestamp='.$now_timestamp_code.'" >PDF3' . '</a>';
         $action_html = $view_html;
         $action_html .= ' '.$edit_html;
         $action_html .= ' '.$duplicate_html;
         $action_html .= ' '.$pdf_html;
         $action_html .= ' '.$pdf2_html;
+        $action_html .= ' '.$pdf3_html;
         // $action_html = '';
 
         // invoice name
