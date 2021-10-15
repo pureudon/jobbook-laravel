@@ -75,7 +75,7 @@ class TCPDFSample3Service
         $quotno = 'workstatuquotnos';
         $po = 'po';
         $salesperson = 'salesperson';
-        $attn = ' &nbsp;&nbsp;  A/C Dept. &nbsp;&nbsp; / &nbsp;&nbsp; 黃先生';
+        $attn = ' &nbsp;&nbsp;  A/C Dept. &nbsp;&nbsp; / &nbsp;&nbsp; 先生';
         $tel = '6998 8556';
         $fax = '2388 6830';
         $companyename = 'Little Red Flower Limited';
@@ -83,10 +83,10 @@ class TCPDFSample3Service
         $companyaddr = '香港九龍新蒲崗爵祿街 33 號 Port33 20樓02室';
 
         # envelope
-        $companyname1 = "Wing Hing Air Condition Co.";
-        $companyname2 = "客戶有限公司";
-        $companyaddr1 = "九龍 九龍灣常悅道19號福康工業大廈5樓6室";
-        $companyaddr2 = "KLN";
+        $companyname1 = "Client Company Name";
+        $companyname2 = "客戶公司 中文";
+        $companyaddr1 = "客戶地址 行一";
+        $companyaddr2 = "客戶地址 行二";
         $label_attn = "ATTN";
         // $attn = "A/C Dept. / 陳先生";
         $label_tel = "TEL";
@@ -94,7 +94,7 @@ class TCPDFSample3Service
         $label_fax = "FAX";
         $company_fax = "2388 6830";
         $label_email = "EMAIL";
-        $company_email = "client@gmail.com";
+        $company_email = "info@xxxxxxxx.com";
 
         # info
         $label_ref = "Invoice No.:";
@@ -118,8 +118,8 @@ class TCPDFSample3Service
         # items
         $items = collect();
             $item = New Item;
-            $item->description = 'Site Maintenance ( 2020 Jan )'.'<br>';
-            $item->description .= '- From 2020-01-01 To 2020-01-31'.'<br>';
+            $item->description = 'Site Maintenance ( 2021 Jan )'.'<br>';
+            $item->description .= '- From 2021-01-01 To 2021-01-31'.'<br>';
             $item->description .= '- Domain Server, Mail Server, Web Server, Network Router Setting, Printer Setup';
             $item->unitprice = '';
             $item->qty = '';
@@ -129,7 +129,7 @@ class TCPDFSample3Service
             $items->push($item);
 
             $item = New Item;
-            $item->description = 'Jobbook System Maintenance ( 2020 Jan )'.'<br>';
+            $item->description = 'Jobbook System Maintenance ( 2021 Jan )'.'<br>';
             $item->description .= '- From 2020-01-01 To 2020-01-31'.'<br>';
             $item->description .= '- Source code update'.'<br>';
             $item->description .= '- Database regular backup'.'<br>';
@@ -222,6 +222,9 @@ class TCPDFSample3Service
             if ($letterhead){
                 // $this->pdf_page_logo($pdf,$logo);
                 // $this->pdf_page_iso($pdf,$iso);
+                // $this->pdf_barcode($pdf,$docref);
+                $this->pdf_qrcode($pdf,$docref);
+                
                 $this->pdf_page_header($pdf,$header_companynamezh,$style,$header_companynameen1,$header_companynameen2);
             }
 
@@ -287,6 +290,48 @@ class TCPDFSample3Service
         return $this->pdf_output($pdf,$docref,$docdate,$companyname,$workstatus,$letterhead,$location);
     }
 
+    public function pdf_qrcode($pdf,$docref)
+    {
+        $style = array(
+            'border' => 0,
+            'vpadding' => 'auto',
+            'hpadding' => 'auto',
+            'fgcolor' => array(0,0,0),
+            'bgcolor' => false, //array(255,255,255)
+            'module_width' => 1, // width of a single module in points
+            'module_height' => 1 // height of a single module in points
+        );
+        
+        // QRCODE,L : QR-CODE Low error correction
+        $link = 'http://gridviz.com/'.'watch';
+        $pdf->write2DBarcode($code=$link, $type='QRCODE,L', $x=180, $y=270, $w=20, $h=20, $style=$style, $align='N', $distort=false);
+    }
+
+    public function pdf_barcode($pdf,$docref)
+    {
+        $style = array(
+            'position' => '',
+            'align' => 'C',
+            'stretch' => false,
+            'fitwidth' => true,
+            'cellfitalign' => '',
+            'border' => false,
+            'hpadding' => 'auto',
+            'vpadding' => 'auto',
+            'fgcolor' => array(0,0,0),
+            'bgcolor' => false, //array(255,255,255),
+            'text' => false,
+            'font' => 'helvetica',
+            'fontsize' => 8,
+            'stretchtext' => 4
+        );
+        
+        // PRINT VARIOUS 1D BARCODES
+        
+        // CODE 39 + CHECKSUM
+        $pdf->write1DBarcode($code='INV-123456', $type='C39+', $x='100', $y='', $w='', $h=10, $xres=0.4, $style=$style, $align='N');
+    }
+
     
     public function pdf_envelope_content($pdf,$companyname1,$companyname2,$companyaddr1,$companyaddr2,$label_attn,$attn,$label_tel,$company_tel,$label_fax,$company_fax,$label_email,$company_email)
     {
@@ -349,15 +394,15 @@ class TCPDFSample3Service
 
         // salesperson
         $pdf->writeHTMLCell($w=30,$h=5,$x=$info_x+0,$y=$info_y+15,'Salesperson:',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
-        $pdf->writeHTMLCell($w=60,$h=5,$x=$info_x+30,$y=$info_y+15,'Kelvin Wong',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=60,$h=5,$x=$info_x+30,$y=$info_y+15,'xxxxxxxx',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
         // tel
         $pdf->writeHTMLCell($w=30,$h=5,$x=$info_x+0,$y=$info_y+20,'Tel',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
-        $pdf->writeHTMLCell($w=60,$h=5,$x=$info_x+30,$y=$info_y+20,'6998 8556',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=60,$h=5,$x=$info_x+30,$y=$info_y+20,'xxxx xxxx',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
         // email
         $pdf->writeHTMLCell($w=30,$h=5,$x=$info_x+0,$y=$info_y+25,'Email',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
-        $pdf->writeHTMLCell($w=60,$h=5,$x=$info_x+30,$y=$info_y+25,'kelvinwong@littleredflower.com',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=60,$h=5,$x=$info_x+30,$y=$info_y+25,'info@littleredflower.com',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
         // po
         $pdf->writeHTMLCell($w=30,$h=5,$x=$info_x+0,$y=$info_y+30,'',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
@@ -602,7 +647,7 @@ class TCPDFSample3Service
     public function pdf_paymentmethod($pdf)
     {
         // Absolute X Y Positon
-        $x = 125;
+        $x = 123;
         $y = 235;
         
         $w = 75;
