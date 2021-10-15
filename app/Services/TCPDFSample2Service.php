@@ -205,13 +205,14 @@ class TCPDFSample2Service
             $this->pdf_info_frame($pdf);
             $this->pdf_info_content($pdf,$docref,$docdate,$quotno,$po,$salesperson,$attn,$tel,$fax,$companyename,$companycname,$companyaddr);
 
+            // // $this->pdf_envelope_size($pdf);
             // // $this->pdf_envelope_window($pdf);
             // $this->pdf_envelope_content($pdf,$companyname1,$companyname2,$companyaddr1,$companyaddr2,$label_attn,$attn,$label_tel,$company_tel,$label_fax,$company_fax);
             // $this->pdf_info_right($pdf,$label_ref,$docref,$label_date,$docdate);
             
             $this->pdf_item_frame($pdf,$column1,$column2,$column3,$column4,$column5,$column6,$label_totalamount,$label_amountdue);
-            // $this->pdf_item_table_remark_frame($pdf);
-            // $this->pdf_item_table_signature_frame($pdf);
+            // $this->pdf_remark_frame($pdf);
+            // $this->pdf_signature_frame($pdf);
         });
             
 
@@ -264,24 +265,34 @@ class TCPDFSample2Service
     
     public function pdf_envelope_content($pdf,$companyname1,$companyname2,$companyaddr1,$companyaddr2,$label_attn,$attn,$label_tel,$company_tel,$label_fax,$company_fax)
     {
-        $debug_border = false;
+        $pdf->SetFont('droidsansfallbackhk', 'B', 10);
 
-        $this->pdf_string($pdf,$w=15,$h=50,$x=80,$y=5,$debug_border,$companyname1);
-        $this->pdf_string($pdf,$w=15,$h=55,$x=80,$y=5,$debug_border,$companyname2);
+        // companynam1
+        $pdf->writeHTMLCell($w=80,$h=5,$x=15,$y=50,$companyname1,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
-        $this->pdf_string($pdf,$w=15,$h=65,$x=80,$y=5,$debug_border,$companyaddr1);
-        $this->pdf_string($pdf,$w=15,$h=70,$x=80,$y=5,$debug_border,$companyaddr2);
+        // companynam2
+        $pdf->writeHTMLCell($w=80,$h=5,$x=15,$y=55,$companyname2,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
-        $this->pdf_string($pdf,$w=15,$h=75,$x=15,$y=5,$debug_border,$label_attn);
-        $this->pdf_string($pdf,$w=30,$h=75,$x=65,$y=5,$debug_border,$attn);
+        // empty line
+        $pdf->writeHTMLCell($w=80,$h=5,$x=15,$y=60,'',$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
-        $this->pdf_string($pdf,$w=15,$h=80,$x=15,$y=5,$debug_border,$label_tel);
-        $this->pdf_string($pdf,$w=30,$h=80,$x=25,$y=5,$debug_border,$company_tel);
+        // addr1
+        $pdf->writeHTMLCell($w=80,$h=5,$x=15,$y=65,$companyaddr1,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        
+        // addr2
+        $pdf->writeHTMLCell($w=80,$h=5,$x=15,$y=70,$companyaddr2,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
-        $this->pdf_string($pdf,$w=55,$h=80,$x=15,$y=5,$debug_border,$label_fax);
-        $this->pdf_string($pdf,$w=70,$h=80,$x=25,$y=5,$debug_border,$company_fax);
+        // attn
+        $pdf->writeHTMLCell($w=15,$h=5,$x=15,$y=75,$label_attn,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=65,$h=5,$x=30,$y=75,$attn,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
+        // tel
+        $pdf->writeHTMLCell($w=15,$h=5,$x=15,$y=80,$label_tel,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=25,$h=5,$x=30,$y=80,$company_tel,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
+        // fax
+        $pdf->writeHTMLCell($w=15,$h=5,$x=55,$y=80,$label_fax,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=25,$h=5,$x=70,$y=80,$company_fax,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
     }
 
     public function pdf_info_right($pdf,$label_ref,$docref,$label_date,$docdate)
@@ -289,26 +300,25 @@ class TCPDFSample2Service
         // Rightside
         $debug_border=false;
 
-        $doctitle = "MONTHLY STATEMENT";
-        $fontsize = 14;
-        $align = 'L';
-        $this->pdf_statement($pdf,120,50,60,5,$debug_border,$align,$fontsize,$doctitle);
+        $info_x = 0;
+        $info_y = 0;
 
-        $this->pdf_string($pdf,$w=120,$h=60,$x=30,$y=5,$debug_border,$label_ref);
-        $this->pdf_string($pdf,$w=150,$h=60,$x=40,$y=5,$debug_border,$docref);
+        // ref no.
+        $pdf->writeHTMLCell($w=30,$h=5,$x=$info_x+120,$y=$info_y+60,$label_ref,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=40,$h=5,$x=$info_x+150,$y=$info_y+60,$docref,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
 
-        $this->pdf_string($pdf,$w=120,$h=65,$x=30,$y=5,$debug_border,$label_date);
-        $this->pdf_string($pdf,$w=150,$h=65,$x=40,$y=5,$debug_border,$docdate);
-
+        // date
+        $pdf->writeHTMLCell($w=30,$h=5,$x=$info_x+120,$y=$info_y+65,$label_date,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
+        $pdf->writeHTMLCell($w=40,$h=5,$x=$info_x+150,$y=$info_y+65,$docdate,$border=0,$ln=0,$fill=0,$reseth=true,$align='L',$autopadding=false);
     }
 
-    public function pdf_item_table_remark_frame($pdf)
+    public function pdf_remark_frame($pdf)
     {
         // Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=0, $link='', $stretch=0, $ignore_min_height=false, $calign='T', $valign='M')
         $pdf->Cell(0, 25, '', 1, true, 'C', 0, '', 0, false, 'T', 'M');
     }
 
-    public function pdf_item_table_signature_frame($pdf)
+    public function pdf_signature_frame($pdf)
     {
         // Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=0, $link='', $stretch=0, $ignore_min_height=false, $calign='T', $valign='M')
         $pdf->Cell(0, 30, '', 1, true, 'C', 0, '', 0, false, 'T', 'M');
@@ -509,88 +519,31 @@ class TCPDFSample2Service
         $pdf->Image($image_file, $x, $y, '', 15, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
     }
 
-    public function pdf_string($pdf,$x,$y,$w,$h,$border=0,$string)
-    {
-        // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true);
-       
-        // Absolute X Y Positon
-        // $x = 125;
-        // $y = 250;
-        
-        // $w = 75;
-        // $h = 20;
-
-        // $border = 0;
-        $ln = 0;
-        $fill = 0;
-        $reseth = true;
-        $align = 'L';
-        $autopadding = false;
-
-        $html = "";
-        $html .= $string;
-
-        $pdf->SetFont('droidsansfallbackhk', 'B', 10);
-
-        $pdf->writeHTMLCell($w, $h, $x, $y, $html, $border, $ln, $fill, $reseth, $align, $autopadding);
-    }
-
-
-    public function pdf_statement($pdf,$x,$y,$w,$h,$border=0,$align='L',$fontsize=10,$string)
-    {
-        // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true);
-       
-        // Absolute X Y Positon
-        // $x = 125;
-        // $y = 250;
-        
-        // $w = 75;
-        // $h = 20;
-
-        // $border = 0;
-        $ln = 0;
-        $fill = 0;
-        $reseth = true;
-        // $align = 'C';
-        $autopadding = false;
-
-        $html = "";
-        $html .= $string;
-
-        $pdf->SetFont('droidsansfallbackhk', 'B', $fontsize);
-
-        $pdf->writeHTMLCell($w, $h, $x, $y, $html, $border, $ln, $fill, $reseth, $align, $autopadding);
-    }
-
-
     public function pdf_envelope_window($pdf)
     {
-        // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true);
-       
         // Absolute X Y Positon
-        $x = 15;
-        $y = 50;
-        
-        $w = 80;
-        $h = 35;
 
-        $border = 0;
-        $ln = 0;
-        $fill = 0;
-        $reseth = true;
-        $align = 'L';
-        $autopadding = false;
-
-        $html = "";
-
-        $pdf->SetFont('droidsansfallbackhk', 'B', 10);
-
-        $pdf->writeHTMLCell($w, $h, $x, $y, $html, $border=0, $ln, $fill, $reseth, $align, $autopadding);
+        $envw_x = 15-2;
+        $envw_y = 50-1;
+        $envw_w = 80+4;
+        $envw_h = 35+2;
 
         // frame
-        $pdf->writeHTMLCell($w+4, $h+2, $x-2, $y-1, '', $border=1, $ln, $fill, $reseth, $align, $autopadding);
+        $pdf->writeHTMLCell($w=$envw_w, $h=$envw_h, $x=$envw_x, $y=$envw_y, $html='', $border=1, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true);
     }
 
+    public function pdf_envelope_size($pdf)
+    {
+        // Absolute X Y Positon
+
+        // A4 Size = w210 h297
+        // A4 三摺 Envelope Size = w220 h110 
+
+        // frame
+        $pdf->writeHTMLCell($w=210, $h=100, $x=0, $y=0, $html='', $border=1, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true);
+        $pdf->writeHTMLCell($w=210, $h=100, $x=0, $y=100, $html='', $border=1, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true);
+        $pdf->writeHTMLCell($w=210, $h=100, $x=0, $y=200, $html='', $border=1, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true);
+    }
 
     public function pdf_paymentmethod($pdf)
     {
