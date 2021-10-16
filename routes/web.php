@@ -94,6 +94,7 @@ Route::post('invoice/data',[\App\Http\Controllers\InvoiceController::class, 'dat
 Route::get('invoice/{invoice}/pdf',[\App\Http\Controllers\InvoiceController::class, 'pdf'])->name('invoice.pdf');
 Route::get('invoice/{invoice}/pdf2',[\App\Http\Controllers\InvoiceController::class, 'pdf2'])->name('invoice.pdf2');
 Route::get('invoice/{invoice}/pdf3',[\App\Http\Controllers\InvoiceController::class, 'pdf3'])->name('invoice.pdf3');
+Route::get('invoice/{invoice}/pdf4',[\App\Http\Controllers\InvoiceController::class, 'pdf4'])->name('invoice.pdf4');
 
 // invoice.show place to the last row, conflict with others GET route
 Route::get('invoice/{invoice}',[\App\Http\Controllers\InvoiceController::class, 'show'])->name('invoice.show');

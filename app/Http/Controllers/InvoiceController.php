@@ -23,6 +23,7 @@ use App\Transformers\InvoiceTransformer;
 use App\Services\TCPDFSample1Service;
 use App\Services\TCPDFSample2Service;
 use App\Services\TCPDFSample3Service;
+use App\Services\TCPDFSample4Service;
 
 class InvoiceController extends Controller
 {
@@ -31,13 +32,15 @@ class InvoiceController extends Controller
     protected $tcpdfsample1Service;
     protected $tcpdfsample2Service;
     protected $tcpdfsample3Service;
+    protected $tcpdfsample4Service;
 
     public function __construct(
         InvoiceRepository $invoiceRepository,
         InvoiceColumnRepository $invoicecolumnRepository,
         TCPDFSample1Service $tcpdfsample1Service,
         TCPDFSample2Service $tcpdfsample2Service,
-        TCPDFSample3Service $tcpdfsample3Service
+        TCPDFSample3Service $tcpdfsample3Service,
+        TCPDFSample4Service $tcpdfsample4Service
     )
     {
         $this->invoiceRepository = $invoiceRepository;
@@ -45,6 +48,7 @@ class InvoiceController extends Controller
         $this->tcpdfsample1Service = $tcpdfsample1Service;
         $this->tcpdfsample2Service = $tcpdfsample2Service;
         $this->tcpdfsample3Service = $tcpdfsample3Service;
+        $this->tcpdfsample4Service = $tcpdfsample4Service;
     }
 
     /**
@@ -447,8 +451,12 @@ class InvoiceController extends Controller
 
     public function pdf3($id)
     {
-        // $this->tcpdfsample2Service->simple_pdf();
         $this->tcpdfsample3Service->generatejobpdf($id,$letterhead=false,$location='I');
+    }
+
+    public function pdf4($id)
+    {
+        $this->tcpdfsample4Service->generatejobpdf($id,$letterhead=false,$location='I');
     }
     
 }
