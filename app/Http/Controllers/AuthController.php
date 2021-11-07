@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -23,12 +23,22 @@ class AuthController extends Controller
     public function login(Request $request)
     {
       $credentials = $request->only(['email', 'password']);
-
+      // dd($credentials);
       if (!$token = auth()->attempt($credentials)) {
         return response()->json(['error' => 'Unauthorized'], 401);
       }
 
       return $this->respondWithToken($token);
+    }
+
+    public function profile(Request $request)
+    {
+      // dd($request->user()->id);
+      return response()->json([
+        'id' => $request->user()->id,
+        'name' => $request->user()->name,
+        'email' => $request->user()->email,
+      ]); 
     }
 
     protected function respondWithToken($token)

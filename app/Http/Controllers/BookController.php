@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Book;
+use App\Models\Book;
 use App\Http\Resources\BookResource;
 
 class BookController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth:api')->except(['index', 'show']);
+        // $this->middleware('auth:api');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +35,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->user());
         $book = Book::create([
             'user_id' => $request->user()->id,
             'title' => $request->title,
@@ -42,7 +51,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Book $book)
     {
         return new BookResource($book);
     }
@@ -54,7 +63,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
         // check if currently authenticated user is the owner of the book
         if ($request->user()->id !== $book->user_id) {
@@ -72,7 +81,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
         $book->delete();
 
