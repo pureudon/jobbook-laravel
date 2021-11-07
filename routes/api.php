@@ -39,3 +39,11 @@ Route::patch('books/{book}',[\App\Http\Controllers\BookController::class, 'updat
 Route::delete('books/{book}',[\App\Http\Controllers\BookController::class, 'destroy'])->name('datatypes.destroy');
 
 Route::post('books/{book}/ratings', [\App\Http\Controllers\RatingController::class, 'store']);
+
+
+# datatypes
+Route::get('datatypes',[\App\Http\Controllers\DatatypeApiController::class, 'index'])->name('datatypesapi.index');
+Route::post('datatypes',[\App\Http\Controllers\DatatypeApiController::class, 'store'])->name('datatypesapi.store');
+Route::get('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'show'])->name('datatypesapi.show');
+Route::patch('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'update'])->name('datatypesapi.update');
+Route::delete('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'destroy'])->name('datatypesapi.destroy');
