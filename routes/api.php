@@ -29,7 +29,7 @@ Route::get('/testapi', function () {
 
 Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::get('profile', [\App\Http\Controllers\AuthController::class, 'profile']);
+Route::middleware('auth:api')->get('profile', [\App\Http\Controllers\AuthController::class, 'profile']);
 
 // Route::apiResource('books', \App\Http\Controllers\BookController::class);
 Route::get('books',[\App\Http\Controllers\BookController::class, 'index'])->name('datatypes.index');
