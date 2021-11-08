@@ -20,4 +20,14 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    <Limit GET POST PUT OPTIONS DELETE PATCH HEAD>
+        Order allow,deny
+        Allow from all
+    </Limit>
+    <LimitExcept GET POST PUT OPTIONS DELETE PATCH HEAD>
+        Order deny,allow
+        Deny from all
+    </LimitExcept>
+
 </IfModule>
