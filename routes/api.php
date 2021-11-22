@@ -43,12 +43,16 @@ Route::post('books/{book}/ratings', [\App\Http\Controllers\RatingController::cla
 
 
 # datatypes
+Route::get('datatypes/list',[\App\Http\Controllers\DatatypeApiController::class, 'list'])->name('datatypesapi.list');
+Route::get('datatypes/count',[\App\Http\Controllers\DatatypeApiController::class, 'count'])->name('datatypesapi.count');
+
 Route::get('datatypes',[\App\Http\Controllers\DatatypeApiController::class, 'index'])->name('datatypesapi.index');
 Route::post('datatypes',[\App\Http\Controllers\DatatypeApiController::class, 'store'])->name('datatypesapi.store');
 Route::get('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'show'])->name('datatypesapi.show');
 Route::put('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'update'])->name('datatypesapi.update');
 Route::patch('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'update'])->name('datatypesapi.update');
 Route::delete('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'destroy'])->name('datatypesapi.destroy');
+
 
 // Route::middleware('auth:api')->post('datatypes',[\App\Http\Controllers\DatatypeApiController::class, 'store'])->name('datatypesapi.store');
 // Route::middleware('auth:api')->put('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'update'])->name('datatypesapi.update');
