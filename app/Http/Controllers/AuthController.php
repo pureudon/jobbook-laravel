@@ -38,6 +38,20 @@ class AuthController extends Controller
         'id' => $request->user()->id,
         'name' => $request->user()->name,
         'email' => $request->user()->email,
+        'department' => $request->user()->department,
+
+        'avatar' => $request->user()->avatar,
+        'website' => $request->user()->website,
+        'rating' => $request->user()->rating,
+        'phone' => $request->user()->phone,
+
+        'username' => $request->user()->username,
+        'city' => $request->user()->city,
+        'country' => $request->user()->country,
+        'company' => $request->user()->company,
+
+        'position' => $request->user()->position,
+        'isadmin' => $request->user()->isadmin,
       ]); 
     }
 

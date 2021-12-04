@@ -58,3 +58,19 @@ Route::delete('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiControlle
 // Route::middleware('auth:api')->put('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'update'])->name('datatypesapi.update');
 // Route::middleware('auth:api')->patch('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'update'])->name('datatypesapi.update');
 // Route::middleware('auth:api')->delete('datatypes/{datatype}',[\App\Http\Controllers\DatatypeApiController::class, 'destroy'])->name('datatypesapi.destroy');
+
+
+# users
+
+Route::get('users/list',[\App\Http\Controllers\UserApiController::class, 'list'])->name('usersapi.list');
+Route::get('users/count',[\App\Http\Controllers\UserApiController::class, 'count'])->name('usersapi.count');
+
+Route::get('users',[\App\Http\Controllers\UserApiController::class, 'index'])->name('usersapi.index');
+Route::post('users',[\App\Http\Controllers\UserApiController::class, 'store'])->name('usersapi.store');
+Route::get('users/{user}',[\App\Http\Controllers\UserApiController::class, 'show'])->name('usersapi.show');
+Route::put('users/{user}',[\App\Http\Controllers\UserApiController::class, 'update'])->name('usersapi.update');
+Route::patch('users/{user}',[\App\Http\Controllers\UserApiController::class, 'update'])->name('usersapi.update');
+Route::delete('users/{user}',[\App\Http\Controllers\UserApiController::class, 'destroy'])->name('usersapi.destroy');
+
+Route::delete('users/test/removelatest',[\App\Http\Controllers\UserApiController::class, 'removelatest'])->name('usersapi.removelatest');
+Route::post('users/test/resetautoincrement',[\App\Http\Controllers\UserApiController::class, 'resetautoincrement'])->name('usersapi.resetautoincrement');

@@ -37,7 +37,6 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-
             // 'expires_at' => $this->whenPivotLoaded('role_user', function () {
             //     return $this->pivot->expires_at;
             // }),
@@ -66,6 +65,22 @@ class UserResource extends JsonResource
             //     'second-secret' => 'value',
             // ]),
 
+            'department' => $this->department,
+            // 'avatar' => base64_encode($this->avatar),
+
+            'avatar' => ($this->avatar),
+            'website' => $this->website,
+            'rating' => $this->rating,
+            'phone' => $this->phone,
+
+            'username' => $this->username,
+            'city' => $this->city,
+            'country' => $this->country,
+            'company' => $this->company,
+
+            'position' => $this->position,
+            'isadmin' => $this->isadmin,
+
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
@@ -82,6 +97,7 @@ class UserResource extends JsonResource
     public function withResponse($request, $response)
     {
         $response->header('X-Value', 'True');
+        $response->setEncodingOptions(JSON_UNESCAPED_SLASHES);
     }
 
 }

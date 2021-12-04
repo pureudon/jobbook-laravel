@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Datatype;
+use Illuminate\Support\Facades\Storage;
 
 class DatatypeController extends Controller
 {
@@ -16,6 +17,9 @@ class DatatypeController extends Controller
     public function index()
     {
         // return "hi index";
+
+        // $contents = Storage::get('reddot.png');
+        // return(base64_encode($contents));
 
         $datatypes = Datatype::orderBy('id','asc')->get();
 
